@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return response()->json(User::all());    
     }
 
     /**
@@ -35,7 +35,37 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'phone_nr' => 'required',
+            'vacation_days' => 'required',
+            'vacation_days_left' => 'required',
+            'role_id' => 'required',
+            'country_id' => 'required',
+
+        ]);
+
+        $user = new User();
+        $user->first_name = $request->input('first_name'); 
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->phone_nr = $request->input('phone_nr');
+        $user->vacation_days = $request->input('vacation_days');
+        $user->vacation_days_left = $request->input('vacation_days_left');
+        $user->role_id = $request->input('role_id');
+        $user->country_id = $request->input('country_id');
+
+        $user->save();
+
+        return response()->json([
+            'message' => 'New user created',
+            'user' => $user
+        ]);
+
     }
 
     /**
@@ -69,7 +99,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        
     }
 
     /**
