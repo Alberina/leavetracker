@@ -14,7 +14,7 @@ class VacationController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Vacation::all());
     }
 
     /**
@@ -35,7 +35,29 @@ class VacationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'approved' => 'required',
+            'approved_date' => 'required',
+            'employee_id' => 'required',
+            'employer_id' => 'required'
+        ]);
+
+        $vacation = new Vacation();
+        $vacation->start_date = $request->input('start_dates');
+        $vacation->end_date = $request->input('end_date');
+        $vacation->approved = $request->input('approved');
+        $vacation->approved_date = $request->input('approved_date');
+        $vacation->employee_id = $request->input('employee_id');
+        $vacation->employer_id = $request->input('employer_id');
+
+        $vacation->save();
+
+        return response()->json([
+            'message' => 'Vacation created',
+            'vacation' => $vacation
+        ]);
     }
 
     /**
@@ -46,7 +68,7 @@ class VacationController extends Controller
      */
     public function show(Vacation $vacation)
     {
-        //
+        return $vacation;
     }
 
     /**
@@ -69,7 +91,28 @@ class VacationController extends Controller
      */
     public function update(Request $request, Vacation $vacation)
     {
-        //
+        $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'approved' => 'required',
+            'approved_date' => 'required',
+            'employee_id' => 'required',
+            'employer_id' => 'required'
+        ]);
+
+        $vacation->start_date = $request->input('start_dates');
+        $vacation->end_date = $request->input('end_date');
+        $vacation->approved = $request->input('approved');
+        $vacation->approved_date = $request->input('approved_date');
+        $vacation->employee_id = $request->input('employee_id');
+        $vacation->employer_id = $request->input('employer_id');
+
+        $vacation->save();
+
+        return response()->json([
+            'message' => 'Vacation updated',
+            'vacation' => $vacation
+        ]);
     }
 
     /**
@@ -80,6 +123,9 @@ class VacationController extends Controller
      */
     public function destroy(Vacation $vacation)
     {
-        //
+        $vacation->delete();
+        return response()->json([
+            'message' => 'Successfully deleted vacation!'
+        ]);
     }
 }
