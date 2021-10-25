@@ -12,4 +12,12 @@ class User extends Model
     public function role(){
         return $this->belongsTo('App\Role');
     }
+
+    public function vacationEmployees(){
+        return $this->hasMany('App\Vacation');
+    }
+
+    public function vacationEmployers(){
+        return $this->hasMany('App\Vacation');
+    }
 }
