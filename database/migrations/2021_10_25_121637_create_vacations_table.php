@@ -18,13 +18,13 @@ class CreateVacationsTable extends Migration
 
             $table->date("start_date");
             $table->date("end_date");
-            $table->boolean('approved');
-            $table->date("approved_date");
+            $table->boolean('approved')->nullable()->change();
+            $table->date("approved_date")->nullable()->change();
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('employer_id');
-            $table->foreign('employer_id')->references('id')->on('users');
+            $table->foreign('employer_id')->references('id')->on('users')->nullable()->change();
             $table->timestamps();
         });
     }

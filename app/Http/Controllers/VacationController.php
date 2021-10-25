@@ -38,10 +38,7 @@ class VacationController extends Controller
         $request->validate([
             'start_date' => 'required',
             'end_date' => 'required',
-            'approved' => 'required',
-            'approved_date' => 'required',
-            'employee_id' => 'required',
-            'employer_id' => 'required'
+            'employee_id' => 'required'
         ]);
 
         $vacation = new Vacation();
@@ -94,10 +91,7 @@ class VacationController extends Controller
         $request->validate([
             'start_date' => 'required',
             'end_date' => 'required',
-            'approved' => 'required',
-            'approved_date' => 'required',
             'employee_id' => 'required',
-            'employer_id' => 'required'
         ]);
 
         $vacation->start_date = $request->input('start_dates');
