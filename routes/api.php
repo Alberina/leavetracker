@@ -23,3 +23,4 @@ use App\Http\Controllers\VacationController;
 
 Route::resource('users', UserController::class);
 Route::resource('vacations', VacationController::class);
+Route::get("user-vacations/{id}",  [UserController::class, 'getVacations']);

@@ -156,4 +156,14 @@ class UserController extends Controller
             'message' => 'Successfully deleted user!'
         ]);
     }
+
+    public function getVacations($id){
+        $user = User::find($id);
+
+        $vacations = $user->vacationEmployees;
+
+        return response()->json([
+            'vacations' => $vacations,
+        ]);
+    }
 }

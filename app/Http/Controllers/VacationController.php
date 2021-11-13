@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vacation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class VacationController extends Controller
@@ -122,4 +123,5 @@ class VacationController extends Controller
             'message' => 'Successfully deleted vacation!'
         ]);
     }
+
 }
