@@ -157,10 +157,20 @@ class UserController extends Controller
         ]);
     }
 
-    public function getVacations($id){
+    public function getEmployeeVacations($id){
         $user = User::find($id);
 
         $vacations = $user->vacationEmployees;
+
+        return response()->json([
+            'vacations' => $vacations,
+        ]);
+    }
+
+    public function getEmployerVacations($id){
+        $user = User::find($id);
+
+        $vacations = $user->vacationEmployers;
 
         return response()->json([
             'vacations' => $vacations,

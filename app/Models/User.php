@@ -18,6 +18,6 @@ class User extends Model
     }
 
     public function vacationEmployers(){
-        return $this->hasMany('App\Models\Vacation');
+        return $this->hasMany('App\Models\Vacation','employer_id');
     }
 }
