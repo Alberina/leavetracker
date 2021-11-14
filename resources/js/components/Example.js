@@ -47,11 +47,11 @@ class Example extends React.Component {
               <table className="table table-striped">
                 <thead>
                     <tr>
-                        <td>Employee</td>
-                        <td>Employer</td>
-                        <td>Start Date</td>
-                        <td>End Date</td>
-                        <td>Approved</td>
+                        <th>Employee</th>
+                        <th>Employer</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Approved</th>
                     </tr>
                 </thead>
 
