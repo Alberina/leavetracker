@@ -11,22 +11,62 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8000/api/vacations').then(resp => {
+        let vacations = [];
+        axios.get('/api/vacations-all').then(resp => {
+            // console.log("resp.data", resp.data);
+
+            // resp.data.map((el)=>{
+            //     let obj = {}
+            //     axios.get("/api/users/"+el.employee_id).then(user=>{
+            //         obj = {
+            //             start_date: el.start_date,
+            //             end_date: el.end_date,
+            //             employee: user.data.first_name,
+            //             approved: el.approved == 0 ? 'NO': 'YES'
+            //         };
+            //     })
+
+            //     axios.get("/api/users/"+el.employer_id).then(user=>{
+            //         obj.employer = user.data.first_name;
+            //         console.log("obj", obj);
+            //     })
+                
+            // })
 
         this.setState({
             data: resp.data
         });
 
         console.log(this.state.data);
-    });
+        });
     }
 
     render() {
       return (
           <div className="vacations">
-               {this.state.data.map((el) => (
-                    <div>{el.employee_id}</div>
-                ))}
+              <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Employee</td>
+                        <td>Employer</td>
+                        <td>Start Date</td>
+                        <td>End Date</td>
+                        <td>Approved</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {this.state.data.map((el) => (
+                        <tr key={el.id}>
+                            <td>{el.employee_first_name} {el.employee_last_name}</td>
+                            <td>{el.employer_first_name} {el.employer_last_name}</td>
+                            <td>{el.start_date}</td>
+                            <td>{el.end_date}</td>
+                            <td>{el.approved == 0 ? 'NO': 'YES'}</td>
+                        </tr>
+                    ))}
+                </tbody>
+              </table>
           </div>
       )
     }
