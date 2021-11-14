@@ -1,24 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+const axios = require('axios');
 
-function Example() {
-    return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Example Component</div>
 
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+class Example extends React.Component {
+   
+    constructor(props){
+        super(props);
+        this.state = {data: []}
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:8000/api/vacations').then(resp => {
+
+        this.setState({
+            data: resp.data
+        });
+
+        console.log(this.state.data);
+    });
+    }
+
+    render() {
+      return (
+          <div className="vacations">
+               {this.state.data.map((el) => (
+                    <div>{el.employee_id}</div>
+                ))}
+          </div>
+      )
+    }
+  }
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
-}
+// if (document.getElementById('example')) {
+//     ReactDOM.render(<Example />, document.getElementById('example'));
+// }
