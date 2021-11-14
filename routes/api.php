@@ -23,5 +23,6 @@ use App\Http\Controllers\VacationController;
 
 Route::resource('users', UserController::class);
 Route::resource('vacations', VacationController::class);
+Route::get("vacations-all",  [VacationController::class, 'getVacations']);
 Route::get("employee-vacations/{id}",  [UserController::class, 'getEmployeeVacations']);
 Route::get("employer-vacations/{id}",  [UserController::class, 'getEmployerVacations']);

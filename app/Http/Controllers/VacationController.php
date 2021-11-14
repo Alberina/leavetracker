@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vacation;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VacationController extends Controller
 {
@@ -122,6 +123,20 @@ class VacationController extends Controller
         return response()->json([
             'message' => 'Successfully deleted vacation!'
         ]);
+    }
+    
+
+    public function getVacations(){
+
+         $vacations = DB::table('vacations')
+         ->join('users as u', 'u.id', '=', 'vacations.employee_id')
+         ->join('users as s', 's.id', '=', 'vacations.employer_id')
+         ->select('vacations.*', 'u.first_name as employee_first_name', 'u.last_name as employee_last_name', 's.first_name as employer_first_name', 's.last_name as employer_last_name')
+         ->get();
+
+        return response()->json($vacations);
+
+
     }
 
 }
