@@ -1,0 +1,72 @@
+.sidebar {
+    background: #eaedef;
+    height: calc(100vh - 1rem);
+    height: 100%;
+    overflow: hidden;
+    border-radius: 6px;
+    .sidebar-header {
+        padding: 1rem;
+        background: #cfcfcf;
+        .navbar-brand {
+            color: black;
+            font-weight: 900;
+        }
+    }
+    .side-menu-container {
+        padding: 1rem;
+        ul li {
+            margin-bottom: 10px;
+            a {
+                border-radius: 6px;
+                padding: 1rem 0.5rem;
+                color: black;
+                background: #7777ff33;
+                display: block;
+                transition: 0.2s all;
+                &:hover {
+                    text-decoration: none;
+                    background: #7777ff44;
+                    box-shadow: 0px 0px 5px #7777ff44;
+                }
+            }
+            .panel-collapse {
+                margin-left: 20px;
+                margin-top: 10px;
+                a {
+                    padding: 0.5rem;
+                    background: #77a6ff33;
+                    &:hover {
+                        background: #77a6ff44;
+                        box-shadow: 0px 0px 5px #77a6ff44;
+                    }
+                }
+            }
+        }
+        .panel {
+            a[aria-expanded="true"] {
+                background: #7777ff66;
+                &:before {
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+            .arrow-icon {
+                overflow: hidden;
+                position: relative;
+                &:before {
+                    // content: "▼";
+                    content: url("../assets/icons/down-arrow.svg");
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    z-index: 1;
+                    text-align: center;
+                    width: 20px;
+                    height: 20px;
+                    pointer-events: none;
+                    transform: translateY(-50%);
+                    transition: .2s all;
+                }
+            }
+        }
+    }
+}

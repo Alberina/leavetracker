@@ -4,10 +4,10 @@ const axios = require('axios');
 
 
 class Example extends React.Component {
-   
-    constructor(props){
+
+    constructor(props) {
         super(props);
-        this.state = {data: []}
+        this.state = { data: [] }
     }
 
     componentDidMount() {
@@ -30,47 +30,45 @@ class Example extends React.Component {
             //         obj.employer = user.data.first_name;
             //         console.log("obj", obj);
             //     })
-                
+
             // })
 
-        this.setState({
-            data: resp.data
-        });
-
-        console.log(this.state.data);
+            this.setState({
+                data: resp.data
+            });
         });
     }
 
     render() {
-      return (
-          <div className="vacations">
-              <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Employee</th>
-                        <th>Employer</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Approved</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {this.state.data.map((el) => (
-                        <tr key={el.id}>
-                            <td>{el.employee_first_name} {el.employee_last_name}</td>
-                            <td>{el.employer_first_name} {el.employer_last_name}</td>
-                            <td>{el.start_date}</td>
-                            <td>{el.end_date}</td>
-                            <td>{el.approved == 0 ? 'NO': 'YES'}</td>
+        return (
+            <div className="vacations">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Employer</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Approved</th>
                         </tr>
-                    ))}
-                </tbody>
-              </table>
-          </div>
-      )
+                    </thead>
+
+                    <tbody>
+                        {this.state.data.map((el) => (
+                            <tr key={el.id}>
+                                <td>{el.employee_first_name} {el.employee_last_name}</td>
+                                <td>{el.employer_first_name} {el.employer_last_name}</td>
+                                <td>{el.start_date}</td>
+                                <td>{el.end_date}</td>
+                                <td>{el.approved == 0 ? 'NO' : 'YES'}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        )
     }
-  }
+}
 
 export default Example;
 

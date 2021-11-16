@@ -14,13 +14,25 @@ require('./bootstrap');
 
 // require('./components/Example');
 import Example from './components/Example';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 function App() {
     return (
-        <div className="container">
-            <Example />
+        <div className="container-fluid p-0">
+            <Header />
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12 col-md-3 col-lg-3">
+                        <Sidebar />
+                    </div>
+                    <div className="col-12 col-md-9 col-lg-9">
+                        <Example />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
