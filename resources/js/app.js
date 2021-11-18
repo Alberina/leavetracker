@@ -16,14 +16,34 @@ require('./bootstrap');
 import Example from './components/Example';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Home from './components/Home';
+import Dashboard from './components/Admin/Dashboard';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useParams,
+} from "react-router-dom";
 
 function App() {
     return (
         <div className="container-fluid p-0">
             <Header />
-            <div className="container-fluid">
+            <Home />
+            <Router>
+
+                <Routes>
+                    <Route exact path="/" element={<Dashboard />}>
+
+                    </Route>
+                    <Route path="/dashboard" element={<Home />}>
+
+                    </Route>
+                </Routes>
+            </Router>
+            {/* <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 col-md-3 col-lg-3">
                         <Sidebar />
@@ -32,7 +52,7 @@ function App() {
                         <Example />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

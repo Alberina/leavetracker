@@ -19,38 +19,22 @@ class Header extends React.Component{
                     <div className="col-md-12">
                         <Router>
                             <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                                <Navbar.Brand href="#home">React Bootstrap Navbar</Navbar.Brand>
+                                <Navbar.Brand href="#home">Leave Tracker</Navbar.Brand>
                                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                                 <Navbar.Collapse id="basic-navbar-nav">
                                     <Nav className="mr-auto">
                                     <Nav.Link href="/">Home</Nav.Link>
-                                    <Nav.Link href="/about-us">Contact Us</Nav.Link>
-                                    <Nav.Link href="/contact-us">About Us</Nav.Link>
-                                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                    <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                                    {/* <Nav.Link href="/profile">Profile</Nav.Link> */}
+                                    <NavDropdown title="Profile" id="basic-nav-dropdown">
+                                        <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                        <NavDropdown.Item href="/profile">Log out</NavDropdown.Item>
                                     </NavDropdown>
                                     </Nav>
                                 </Navbar.Collapse>
                             </Navbar>
                             <br />
-                            <Routes>
-                                <Route exact path="/">
-                                    {/* <Home /> */}
-                                    sdfdsf
-                                </Route>
-                                <Route path="/about-us">
-                                    {/* <AboutUs /> */}
-                                    sdfds
-                                </Route>
-                                <Route path="/contact-us">
-                                    {/* <ContactUs /> */}
-                                    sdfd
-                                </Route>
-                            </Routes>
                         </Router>
                     </div>
                 </div>
